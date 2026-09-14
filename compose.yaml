@@ -1,0 +1,6 @@
+﻿services:
+  dotapicker:
+    image: dotapicker
+    build:
+      context: .
+      dockerfile: DotaPicker/Dockerfile
