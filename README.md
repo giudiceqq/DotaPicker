@@ -23,7 +23,7 @@ DotaPicker is a backend system that:
 
 **Tech Stack:**
 - C# / ASP.NET Core 10.0
-- Entity Framework Core (SQLite / PostgreSQL)
+- Entity Framework Core (SQLite)
 - MediatR (CQRS)
 - Docker & Docker Compose
 - Swagger/OpenAPI
