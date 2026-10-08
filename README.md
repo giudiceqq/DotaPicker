@@ -508,6 +508,10 @@ Swagger UI: `http://localhost:5000/swagger`
 
 ### **Docker Setup**
 
+1. Create a `.env` file in the root directory:
+```env
+STRATZ_TOKEN=your_token_here
+
 ```bash
 docker compose up
 ```
