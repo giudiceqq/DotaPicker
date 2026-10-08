@@ -1,6 +1,10 @@
 ﻿services:
   dotapicker:
     image: dotapicker
+    ports:
+      - "8080:8080"
     build:
       context: .
       dockerfile: DotaPicker/Dockerfile
+    environment:
+      - Stratz__Token=${STRATZ_TOKEN}

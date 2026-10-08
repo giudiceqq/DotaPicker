@@ -54,7 +54,11 @@ builder.Services.AddHostedService<BackgroundDataFetcher>();
 builder.Services.AddTransient<IMetaDataFetcher, MetaDataFetcher>();
 var app = builder.Build();
 
-
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); 
+}
 
 
 // Configure the HTTP request pipeline.

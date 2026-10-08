@@ -1,6 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-USER $APP_UID
 WORKDIR /app
+RUN chown -R $APP_UID:$APP_UID /app
+USER $APP_UID
 EXPOSE 8080
 EXPOSE 8081
 
@@ -19,5 +20,5 @@ RUN dotnet publish "DotaPicker.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --chown=$APP_UID:$APP_UID --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "DotaPicker.dll"]
