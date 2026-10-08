@@ -38,7 +38,9 @@ public class HeroController(IMetaCache metaCache, IMediator mediator) : Controll
    [HttpPost("get-analytics")]
    public async Task<IActionResult> GetAnalytics([FromBody] AnalyzePickRequest request, CancellationToken cancellationToken)
    {
+      Console.WriteLine($"request {request.AllyHeroes.ToString()}");
       var result = await mediator.Send(request, cancellationToken);
+      Console.WriteLine($"response {result.heroStats.Count} heroes");
       return Ok(result);
    }
 }

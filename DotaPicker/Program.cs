@@ -8,7 +8,7 @@ using webhook_gateway.Singleton;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllersWithViews();
 
 
@@ -21,6 +21,17 @@ builder.Services.AddHttpClient("StratzClient", client =>
     client.DefaultRequestHeaders.Add("User-Agent", "STRATZ_API");
 });
     
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -66,7 +77,7 @@ app.MapStaticAssets();
 
 app.UseDefaultFiles(); 
 app.UseStaticFiles();  
-
+app.UseCors();
 app.MapControllers();
 
 app.Run();

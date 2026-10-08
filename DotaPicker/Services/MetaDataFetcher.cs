@@ -44,7 +44,7 @@ public class MetaDataFetcher(IHttpClientFactory clientFactory) : IMetaDataFetche
       // https://stats.spectral.gg
       
       
-      var response = await client.GetAsync("https://stats.spectral.gg/lrg2/api/?league=imm_ranked_741e&mod=heroes-positions-table&limit=2000", cancellationToken);
+      var response = await client.GetAsync("https://stats.spectral.gg/lrg2/api/?league=imm_ranked_741f&mod=heroes-positions-table&limit=2000", cancellationToken);
       response.EnsureSuccessStatusCode();
       var result = await response.Content.ReadAsStringAsync(cancellationToken);
       
